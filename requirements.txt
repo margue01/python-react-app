@@ -1,0 +1,5 @@
+Flask==1.1.1
+Flask-Injector==0.12.1
+flask_api==1.1
+gunicorn==19.7.0
+tinydb==3.15.2
