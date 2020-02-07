@@ -6,6 +6,7 @@ This project implemets an API and a basic User Interface to manage a list of use
 ## Installation
 
     $ pip install -e requirements.txt
+	$ cd ui-people
     $ yarn install
     $ yarn build
     $ cd ..
@@ -17,7 +18,18 @@ This project implemets an API and a basic User Interface to manage a list of use
 
     $ ./run_local.sh
 
-### API
+## API
+
+#### Healthcheck
+```
+GET http://localhost:8003/app/healthcheck
+```
+Response
+```
+{
+    "status": "ok"
+}
+```
 
 #### Get all the people
 ```
@@ -61,6 +73,14 @@ Body:
 POST http://localhost:8003/app/people
 ```
 
-### UI
+## UI
 
 The User Interface can be reached on http://localhost:8003/index.html
+
+## Improvements
+
+- API: Add sorting by name or email
+- API: Search people by name
+- Build: Dockerize the build
+- Add unit tests
+- Add spinner instead of description when a request was sent.
