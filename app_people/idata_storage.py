@@ -18,6 +18,10 @@ class IDataStorage(ABC):
         pass
 
     @abstractmethod
+    def search_by_name(self, name):
+        pass
+
+    @abstractmethod
     def delete_person(self, person_id):
         pass
 

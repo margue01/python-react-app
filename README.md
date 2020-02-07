@@ -44,6 +44,7 @@ Response
 Query parameters:
 - `sort_by` to sort the records. Valid values are `email`, `name`, `age`, `balance`
 - `limit` to limit the number of records in the response.
+- `name`: search people with `name` string including in the name field.
 
 #### Create a person
 ```
@@ -81,7 +82,6 @@ POST http://localhost:8003/app/people
 The User Interface can be reached on http://localhost:8003/index.html
 
 ## Improvements
-- API: Search people by name
 - Build: Dockerize the build
 - Add unit tests
 - Add spinner instead of description when a request was sent.

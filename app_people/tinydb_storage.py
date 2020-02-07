@@ -1,4 +1,4 @@
-import uuid
+import re
 
 from tinydb import TinyDB, Query
 
@@ -26,6 +26,9 @@ class TinyDbStorage(IDataStorage):
     def list_people(self):
         all_people = self.db.all()
         return all_people
+
+    def search_by_name(self, name):
+        return self.db.search(self.query.name.search(name, flags=re.IGNORECASE))
 
     def delete_person(self, person_id):
         try:

@@ -36,7 +36,8 @@ def version():
 def list_people(person_service: PersonService):
     sort_by_param = request.args.get('sort_by')
     limit_param = request.args.get('limit')
-    people = person_service.list_people(sort_by_key=sort_by_param, limit=limit_param)
+    name = request.args.get('name')
+    people = person_service.list_people(name=name, sort_by_key=sort_by_param, limit=limit_param)
     return jsonify(people), HTTPStatus.OK
 
 

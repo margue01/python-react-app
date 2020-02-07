@@ -27,8 +27,11 @@ class PersonService:
     def delete_person(self, person_id):
         self.storage.delete_person(person_id=person_id)
 
-    def list_people(self, sort_by_key=None, limit=None):
-        people = self.storage.list_people()
+    def list_people(self, name=None, sort_by_key=None, limit=None):
+        if name:
+            people = self.storage.search_by_name(name)
+        else:
+            people = self.storage.list_people()
         if sort_by_key and self._is_valid_key(sort_by_key):
             people.sort(key=lambda item: item[sort_by_key])
         return people[:self._get_limit(limit)]
