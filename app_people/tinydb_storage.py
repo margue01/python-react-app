@@ -33,7 +33,6 @@ class TinyDbStorage(IDataStorage):
             raise PersonNotFoundError(f'Cannot find person {person_id}')
 
     def update_flag(self, person_id, enable):
-        print(f'update_flag for {person_id}  to {enable}')
         self.db.update({'flag': enable}, Query().person_id == person_id)
 
     def close(self):
