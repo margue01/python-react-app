@@ -1,8 +1,9 @@
+import os
 import logging
 import traceback
 
 from http import HTTPStatus
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_injector import FlaskInjector, singleton
 from werkzeug.exceptions import BadRequest
 
@@ -26,10 +27,22 @@ def create_error(status_code, e):
     return response
 
 
+def configure_single_page_app(app):
+    @app.route('/', defaults={'path': ''})
+    @app.route('/<path:path>')
+    def serve(path):
+        app.logger.info(f'loading path {path}')
+        if(path == "" or not os.path.exists('ui-people/build/' + path)):
+            return send_from_directory('ui-people/build', 'index.html')
+        else:
+            return send_from_directory('ui-people/build', path)
+
+
 def setup_app():
     logging.basicConfig(level=logging.INFO)
-    app = Flask('Python-React People app', static_folder='/frontend/build')
+    app = Flask('Python-React People app', static_folder='/ui-people/build')
     app.register_blueprint(api)
+    configure_single_page_app(app)
 
     FlaskInjector(app=app, modules=[configure_dependencies])
 

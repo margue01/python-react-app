@@ -22,3 +22,7 @@ class IDataStorage(ABC):
     @abstractmethod
     def close(self):
         pass
+
+    @abstractmethod
+    def update_flag(self, person_id, update_body):
+        pass
