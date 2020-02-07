@@ -20,7 +20,7 @@ This project implemets an API and a basic User Interface to manage a list of use
 
 ## API
 
-#### Healthcheck
+### Healthcheck
 ```
 GET http://localhost:8003/app/healthcheck
 ```
@@ -31,7 +31,7 @@ Response
 }
 ```
 
-#### Version
+### Version
 ```
 GET http://localhost:8003/app/version
 ```
@@ -42,22 +42,17 @@ Response
 }
 ```
 
-#### Get all the people
+### Get all the people
 ```
 GET http://localhost:8003/app/people
 ```
-Response
-```
-{
-    "created": "ok"
-}
-```
+
 Query parameters:
 - `sort_by` to sort the records. Valid values are `email`, `name`, `age`, `balance`
 - `limit` to limit the number of records in the response.
 - `name`: search people with `name` string including in the name field.
 
-#### Create a person
+### Create a person
 ```
 POST http://localhost:8003/app/people
 ```
@@ -72,7 +67,13 @@ Body:
 	"name": "John"
 }
 ```
-#### Update the person Flag
+Response
+```
+{
+    "created": "ok"
+}
+```
+### Update the person Flag
 ```
 PUT http://localhost:8003/app/people/{person_id}
 ```
@@ -83,7 +84,7 @@ Body:
 }
 ```
 
-#### Delete a person
+### Delete a person
 ```
 POST http://localhost:8003/app/people
 ```
