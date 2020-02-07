@@ -31,6 +31,17 @@ Response
 }
 ```
 
+#### Version
+```
+GET http://localhost:8003/app/version
+```
+Response
+```
+{
+    "version": "0.0.1"
+}
+```
+
 #### Get all the people
 ```
 GET http://localhost:8003/app/people
