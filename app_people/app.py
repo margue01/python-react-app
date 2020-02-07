@@ -32,7 +32,7 @@ def configure_single_page_app(app):
     @app.route('/<path:path>')
     def serve(path):
         app.logger.info(f'loading path {path}')
-        if(path == "" or not os.path.exists('ui-people/build/' + path)):
+        if path == "" or not os.path.exists('ui-people/build/' + path):
             return send_from_directory('ui-people/build', 'index.html')
         else:
             return send_from_directory('ui-people/build', path)
