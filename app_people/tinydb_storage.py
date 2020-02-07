@@ -3,6 +3,7 @@ import uuid
 from tinydb import TinyDB, Query
 
 from app_people.idata_storage import IDataStorage, PersonNotFoundError
+from app_people.person import Person
 
 
 class TinyDbStorage(IDataStorage):
@@ -11,15 +12,15 @@ class TinyDbStorage(IDataStorage):
         self.db = TinyDB('data/people.json')
         self.query = Query()
 
-    def insert_person(self, name, age, balance, email, address):
+    def insert_person(self, person: Person):
         self.db.insert({
-            'name': name,
-            'age': age,
-            'balance': balance,
-            'email': email,
-            'address': address,
-            'flag': False,
-            'person_id': str(uuid.uuid4())[:8]
+            'name': person.name,
+            'age': person.age,
+            'balance': person.balance,
+            'email': person.email,
+            'address': person.address,
+            'flag': person.flag,
+            'person_id': person.person_id
         })
 
     def list_people(self):
@@ -37,3 +38,18 @@ class TinyDbStorage(IDataStorage):
 
     def close(self):
         pass
+
+
+# if __name__ == "__main__":
+#     storage = TinyDbStorage()
+#     storage.insert_person(
+#         name='Martin',
+#         age=32,
+#         balance=10.0,
+#         email='m@g.com',
+#         address='Dublin'
+#     )
+#     print(storage.db.search(Query().person_id == 'd61429ef'))
+#     storage.update_flag('d61429ef', False)
+#     print(storage.db.search(Query().person_id == 'd61429ef'))
+#     storage.close()

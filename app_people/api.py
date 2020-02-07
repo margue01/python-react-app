@@ -34,7 +34,9 @@ def version():
 @inject
 @api.route(f'{API_BASE}', methods=['GET'])
 def list_people(person_service: PersonService):
-    people = person_service.list_people()
+    sort_by_param = request.args.get('sort_by')
+    limit_param = request.args.get('limit')
+    people = person_service.list_people(sort_by_key=sort_by_param, limit=limit_param)
     return jsonify(people), HTTPStatus.OK
 
 

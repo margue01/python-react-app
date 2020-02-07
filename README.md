@@ -41,6 +41,9 @@ Response
     "created": "ok"
 }
 ```
+Query parameters:
+- `sort_by` to sort the records. Valid values are `email`, `name`, `age`, `balance`
+- `limit` to limit the number of records in the response.
 
 #### Create a person
 ```

@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from app_people.person import Person
+
 
 class PersonNotFoundError(Exception):
     pass
@@ -8,7 +10,7 @@ class PersonNotFoundError(Exception):
 class IDataStorage(ABC):
 
     @abstractmethod
-    def insert_person(self, name, age, balance, email, address):
+    def insert_person(self, person: Person):
         pass
 
     @abstractmethod
