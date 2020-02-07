@@ -81,8 +81,6 @@ POST http://localhost:8003/app/people
 The User Interface can be reached on http://localhost:8003/index.html
 
 ## Improvements
-
-- API: Add sorting by name or email
 - API: Search people by name
 - Build: Dockerize the build
 - Add unit tests

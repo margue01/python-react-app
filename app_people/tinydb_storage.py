@@ -38,18 +38,3 @@ class TinyDbStorage(IDataStorage):
 
     def close(self):
         pass
-
-
-# if __name__ == "__main__":
-#     storage = TinyDbStorage()
-#     storage.insert_person(
-#         name='Martin',
-#         age=32,
-#         balance=10.0,
-#         email='m@g.com',
-#         address='Dublin'
-#     )
-#     print(storage.db.search(Query().person_id == 'd61429ef'))
-#     storage.update_flag('d61429ef', False)
-#     print(storage.db.search(Query().person_id == 'd61429ef'))
-#     storage.close()
