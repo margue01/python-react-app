@@ -1,27 +1,29 @@
-import { ADD_USER, ENABLE_USER } from "../actionTypes";
+import { GET_USERS, GET_USERS_DONE, ENABLE_USER, ENABLE_USER_DONE } from "../actionTypes";
 
 const initialState = {
-  allUserIds: [1,2],
-  userByIds: {
-      "1": {"name": "name1", "enable": false, "doc_id": 1},
-      "2": {"name": "name2", "enable": false, "doc_id": 2},
-  }
+  allUserIds: [],
+  userByIds: {},
+  loading: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case ADD_USER: {
-      const { id, content } = action.payload;
+    case GET_USERS: {
       return {
         ...state,
-        allUserIds: [...state.allUserIds, id],
-        userByIds: {
-          ...state.byIds,
-          [id]: {
-            content,
-            enable: false
-          }
-        }
+        loading: true
+      };
+    }
+    case GET_USERS_DONE: {
+      const users = action.payload;
+      const usersById = {}
+      users.forEach(user => {
+        usersById[user.person_id] = user
+      });
+      return {
+        ...state,
+        allUserIds: users.map(item => item.person_id),
+        userByIds: usersById
       };
     }
     case ENABLE_USER: {
@@ -32,7 +34,20 @@ export default function(state = initialState, action) {
           ...state.userByIds,
           [id]: {
             ...state.userByIds[id],
-            enable: !state.userByIds[id].enable
+            updating: true          }
+        }
+      };
+    }
+    case ENABLE_USER_DONE: {
+      const { id } = action.payload;
+      return {
+        ...state,
+        userByIds: {
+          ...state.userByIds,
+          [id]: {
+            ...state.userByIds[id],
+            flag: !state.userByIds[id].flag,
+            updating: false
           }
         }
       };
