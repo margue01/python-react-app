@@ -3,7 +3,9 @@
 This project implemets an API and a basic User Interface to manage a list of users.
 
 
-## Installation
+## Local Run
+
+### Build
 
     $ pip install -e requirements.txt
 	$ cd ui-people
@@ -11,12 +13,19 @@ This project implemets an API and a basic User Interface to manage a list of use
     $ yarn build
     $ cd ..
 
-``Python 3.6`` is required.
+``Python >= 3.6`` is required.
 
 
-## Execution
+### Execution
 
     $ ./run_local.sh
+
+## Run and build with Docker (WIP)
+
+    $ make build
+    $ make run
+
+Note: with the Docker build, the refresh page might hang. This bug requires some investigation. Just refresh again to make it work again.
 
 ## API
 
@@ -94,6 +103,6 @@ POST http://localhost:8003/app/people
 The User Interface can be reached on http://localhost:8003/index.html
 
 ## Improvements
-- Build: Dockerize the build
-- Add unit tests
+- Fix page refresh on the Docker build.
+- Add unit tests.
 - Add spinner instead of description when a request was sent.
