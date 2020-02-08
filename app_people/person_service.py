@@ -31,10 +31,9 @@ class PersonService:
         if name:
             people = self.storage.search_by_name(name)
         else:
-            people = self.storage.list_people()
-        if sort_by_key and self._is_valid_key(sort_by_key):
-            people.sort(key=lambda item: item[sort_by_key])
-        return people[:self._get_limit(limit)]
+            key = sort_by_key if self._is_valid_key(sort_by_key) else None
+            people = self.storage.list_people(sort_by_key=key, limit=self._get_limit(limit))
+        return people
 
     def update_person(self, person_id, update_body):
         if Field.ENABLE in update_body:

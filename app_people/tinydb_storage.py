@@ -23,9 +23,11 @@ class TinyDbStorage(IDataStorage):
             'person_id': person.person_id
         })
 
-    def list_people(self):
-        all_people = self.db.all()
-        return all_people
+    def list_people(self, sort_by_key=None, limit=None):
+        people = self.db.all()
+        if sort_by_key:
+            people.sort(key=lambda item: item[sort_by_key])
+        return people[:limit]
 
     def search_by_name(self, name):
         return self.db.search(self.query.name.search(name, flags=re.IGNORECASE))

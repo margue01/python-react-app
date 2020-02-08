@@ -14,7 +14,7 @@ class IDataStorage(ABC):
         pass
 
     @abstractmethod
-    def list_people(self):
+    def list_people(self, sort_by_key, limit):
         pass
 
     @abstractmethod
