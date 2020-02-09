@@ -96,6 +96,10 @@ Body:
 POST http://localhost:8003/app/people
 ```
 
+## Tests
+
+$ pytest tests/
+
 ## UI
 
 The User Interface can be reached on http://localhost:8003/index.html
