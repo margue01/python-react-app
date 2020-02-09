@@ -1,11 +1,7 @@
 from flask_injector import inject
 
 from app_people.idata_storage import IDataStorage
-from app_people.person import Person
-
-
-class Field:
-    ENABLE = "enable"
+from app_people.person import Person, Field
 
 
 class PersonService:
@@ -36,12 +32,12 @@ class PersonService:
         return people
 
     def update_person(self, person_id, update_body):
-        if Field.ENABLE in update_body:
-            self.storage.update_flag(person_id, update_body[Field.ENABLE])
+        if Field.FLAG in update_body:
+            self.storage.update_flag(person_id, update_body[Field.FLAG])
 
     @staticmethod
     def _is_valid_key(key):
-        return key in ['name', 'email', 'age', 'balance']
+        return key in [Field.NAME, Field.EMAIL, Field.AGE, Field.BALANCE]
 
     @staticmethod
     def _get_limit(limit):

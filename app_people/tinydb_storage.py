@@ -3,7 +3,7 @@ import re
 from tinydb import TinyDB, Query
 
 from app_people.idata_storage import IDataStorage, PersonNotFoundError
-from app_people.person import Person
+from app_people.person import Person, Field
 
 
 class TinyDbStorage(IDataStorage):
@@ -14,13 +14,13 @@ class TinyDbStorage(IDataStorage):
 
     def insert_person(self, person: Person):
         self.db.insert({
-            'name': person.name,
-            'age': person.age,
-            'balance': person.balance,
-            'email': person.email,
-            'address': person.address,
-            'flag': person.flag,
-            'person_id': person.person_id
+            Field.NAME: person.name,
+            Field.AGE: person.age,
+            Field.BALANCE: person.balance,
+            Field.EMAIL: person.email,
+            Field.ADDRESS: person.address,
+            Field.FLAG: person.flag,
+            Field.PERSON_ID: person.person_id
         })
 
     def list_people(self, sort_by_key=None, limit=None):
@@ -39,7 +39,7 @@ class TinyDbStorage(IDataStorage):
             raise PersonNotFoundError(f'Cannot find person {person_id}')
 
     def update_flag(self, person_id, enable):
-        self.db.update({'flag': enable}, Query().person_id == person_id)
+        self.db.update({Field.FLAG: enable}, Query().person_id == person_id)
 
     def close(self):
-        pass
+        self.db.close()

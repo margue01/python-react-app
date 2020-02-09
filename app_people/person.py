@@ -1,6 +1,16 @@
 import uuid
 
 
+class Field:
+    NAME = 'name'
+    AGE = 'age'
+    EMAIL = 'email'
+    BALANCE = 'balance'
+    ADDRESS = 'address'
+    PERSON_ID = 'person_id'
+    FLAG = 'flag'
+
+
 class Person:
 
     def __init__(self, name, age, balance, email, address, flag=False, person_id=None):
@@ -14,13 +24,13 @@ class Person:
 
     def as_dict(self):
         return {
-            'name': self._name,
-            'age': self._age,
-            'balance': self._balance,
-            'email': self._email,
-            'address': self._address,
-            'flag': self._flag,
-            'person_id': self._person_id
+            Field.NAME: self._name,
+            Field.AGE: self._age,
+            Field.BALANCE: self._balance,
+            Field.EMAIL: self._email,
+            Field.ADDRESS: self._address,
+            Field.FLAG: self._flag,
+            Field.PERSON_ID: self._person_id
         }
 
     @property

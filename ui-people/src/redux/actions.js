@@ -39,7 +39,7 @@ export function fetchUsers() {
 export function fetchUpdateUser(id, flag) {
   return function(dispatch) {
     dispatch(enableUser(id));
-    const data = { enable: flag }
+    const data = { flag: flag }
     return fetch(`${APP_PEOPLE_URL}/${id}`, {
       method: 'PUT',
       headers: {
