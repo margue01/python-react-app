@@ -5,8 +5,8 @@ from app_people.person_service import PersonService
 from app_people.tinydb_storage import TinyDbStorage
 
 
-
 MOCK_PEOPLE = [{'name': 'a'}, {'name': 'b'}]
+
 
 class TestPersonService(TestCase):
 
