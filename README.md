@@ -57,7 +57,7 @@ GET http://localhost:8003/app/people
 Query parameters:
 - `sort_by` to sort the records. Valid values are `email`, `name`, `age`, `balance`
 - `limit` to limit the number of records in the response.
-- `name`: search people with `name` string including in the name field.
+- `name`: search people with `name` string included in the name field.
 
 ### Create a person
 ```
