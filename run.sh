@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
+nginx && echo "nginx started"
 exec gunicorn app_people.wsgi:app \
-              --bind 0.0.0.0:8003 \
+              --bind localhost:8080 \
               --timeout 600 \
               --access-logfile - \
               --error-logfile  -

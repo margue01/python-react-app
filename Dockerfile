@@ -8,13 +8,19 @@ COPY ui-people/ ./
 RUN yarn build
 
 # Service app
-FROM python:3
+FROM python:3.7.6-alpine3.11
+
+RUN apk update && \
+    apk add --no-cache nginx ca-certificates gettext
+RUN rm /etc/nginx/conf.d/* && mkdir /run/nginx
 
 WORKDIR /usr/src/app
+
 COPY --from=build-deps /usr/src/ui-people ./ui-people
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
+COPY conf.nginx /etc/nginx/conf.d/apppeople.conf
 
 COPY run.sh ./
 COPY setup.py ./

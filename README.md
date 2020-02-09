@@ -20,12 +20,10 @@ This project implemets an API and a basic User Interface to manage a list of use
 
     $ ./run_local.sh
 
-## Run and build with Docker (WIP)
+## Run and build with Docker and nginx to serve static files
 
     $ make build
     $ make run
-
-Note: with the Docker build, the refresh page might hang. This bug requires some investigation. Just refresh again to make it work again.
 
 ## API
 
@@ -103,6 +101,5 @@ POST http://localhost:8003/app/people
 The User Interface can be reached on http://localhost:8003/index.html
 
 ## Improvements
-- Fix page refresh on the Docker build.
 - Add unit tests.
 - Add spinner instead of description when a request was sent.

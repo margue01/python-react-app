@@ -31,7 +31,7 @@ def configure_single_page_app(app):
     @app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
     def serve(path):
-        app.logger.info(f'loading path {path}')
+        # only used for local build without nginx
         if path == "" or not os.path.exists('ui-people/build/' + path):
             return send_from_directory('ui-people/build', 'index.html')
         else:
@@ -62,4 +62,4 @@ def setup_app():
 
 if __name__ == "__main__":
     flask_app = setup_app()
-    flask_app.run(debug=True)
+    flask_app.run(port=80)
