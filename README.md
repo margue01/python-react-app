@@ -1,6 +1,6 @@
 # Python and React App
 
-This project implemets an API and a basic User Interface to manage a list of users.
+This project implements an API and a basic User Interface to manage a list of users.
 
 
 ## Local Run
