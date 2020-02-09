@@ -98,7 +98,7 @@ POST http://localhost:8003/app/people
 
 ## Tests
 
-$ pytest tests/
+    $ pytest tests/
 
 ## UI
 
