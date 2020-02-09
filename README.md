@@ -7,7 +7,7 @@ This project implemets an API and a basic User Interface to manage a list of use
 
 ### Build
 
-    $ pip install -e requirements.txt
+    $ pip install -r requirements.txt
 	$ cd ui-people
     $ yarn install
     $ yarn build
