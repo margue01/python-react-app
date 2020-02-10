@@ -87,7 +87,7 @@ PUT http://localhost:8003/app/people/{person_id}
 Body:
 ```
 {
-	"enable": true
+	"flag": true
 }
 ```
 
