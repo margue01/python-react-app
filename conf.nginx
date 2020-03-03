@@ -7,6 +7,12 @@ server {
     try_files /build/$uri /build/index.html;
   }
 
+  location /some-path/ui/ {
+    # Remove /some-path/ui/ from the $uri variable
+    rewrite  ^/apps/ga-portal/ui/(.*) $1 break;
+    try_files /build/$uri /build/$uri/ 404;
+  }
+
   location /app {
     proxy_pass http://localhost:8080;
   }
