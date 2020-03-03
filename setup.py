@@ -15,6 +15,6 @@ setup(
     url="",
     packages=find_packages(),
     install_requires=REQUIREMENTS,
-    test_requires=[],
+    test_requires=[pytest],
     test_suite="tests"
 )
