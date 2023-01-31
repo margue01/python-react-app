@@ -15,6 +15,7 @@ This project implements an API and a basic User Interface to manage a list of us
 
 ``Python >= 3.6`` is required.
 
+Tested with Node 12.
 
 ### Execution
 
@@ -24,6 +25,9 @@ This project implements an API and a basic User Interface to manage a list of us
 
     $ make build
     $ make run
+
+>**Warning**
+> The yarn build is slow.
 
 ## API
 
@@ -80,6 +84,12 @@ Response
     "created": "ok"
 }
 ```
+Example:
+```
+curl -X POST -H 'Content-Type: application/json' \
+    -d '{"email":"m@g.com","flag":false,"name": "John","balance": 10.0,"address": "Dub","age": 18}' \
+    http://127.0.0.1:8003/app/people
+```
 ### Update the person Flag
 ```
 PUT http://localhost:8003/app/people/{person_id}
@@ -106,4 +116,6 @@ The User Interface can be reached on http://localhost:8003/index.html
 
 ## Improvements
 - Add unit tests.
+- Add UI to create a person.
 - Add spinner instead of description when a request was sent.
+- Update frontend packages.
