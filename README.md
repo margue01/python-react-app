@@ -114,8 +114,12 @@ POST http://localhost:8003/app/people
 
 The User Interface can be reached on http://localhost:8003/index.html
 
+The UI is used to update a person's status: click a person in the list to toggle their flag.
+
+Adding a person is not available in the UI. Create people through the API ([Create a person](#create-a-person)).
+
 ## Improvements
 - Add unit tests.
 - Add UI to create a person.
 - Add spinner instead of description when a request was sent.
-- Update frontend packages.
+- Add observability
