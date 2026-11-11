@@ -36,3 +36,12 @@ run:
 	docker rmi -f $(CONTAINER_NAME) 2>/dev/null || true
 	docker run -it -p 8003:8003 \
 	--name $(CONTAINER_NAME) $(IMAGE_NAME):$(TAG)
+
+observability:
+	docker compose -f docker-compose.observability.yml up -d
+	@echo "Prometheus: http://localhost:9090  Grafana: http://localhost:3000 (dashboard: App People)"
+
+observability-down:
+	docker compose -f docker-compose.observability.yml down
+
+.PHONY: observability observability-down

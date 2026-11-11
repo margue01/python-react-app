@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: app-people
+    metrics_path: /app/metrics
+    static_configs:
+      # The app is reached on the host, whether it runs via run_local.sh or make run.
+      - targets: ['host.docker.internal:8003']

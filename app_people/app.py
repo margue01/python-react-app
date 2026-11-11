@@ -9,6 +9,7 @@ from werkzeug.exceptions import BadRequest
 
 
 from app_people.api import api
+from app_people.metrics import init_metrics
 from app_people.tinydb_storage import TinyDbStorage
 from app_people.idata_storage import IDataStorage, PersonNotFoundError
 from app_people.person_service import PersonService
@@ -42,6 +43,7 @@ def setup_app():
     logging.basicConfig(level=logging.INFO)
     app = Flask('Python-React People app', static_folder='/ui-people/build')
     app.register_blueprint(api)
+    init_metrics(app)
     configure_single_page_app(app)
 
     FlaskInjector(app=app, modules=[configure_dependencies])
