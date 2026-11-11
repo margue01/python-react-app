@@ -103,7 +103,7 @@ Body:
 
 ### Delete a person
 ```
-POST http://localhost:8003/app/people
+DELETE http://localhost:8003/app/people/{person_id}
 ```
 
 ## Tests
@@ -125,7 +125,7 @@ The app exposes Prometheus metrics at `GET http://localhost:8003/app/metrics`:
 - `http_request_duration_seconds` (histogram): request latency by `method`, `route` and `status`.
 - `http_requests_in_progress` (gauge): requests currently being handled.
 
-Routes are labelled with their template (for example `/app/people/<person_id>`), not the raw path, so person IDs don't create new time series.
+Routes are labelled with their template (for example `/app/people/<person_id>`), not the raw path, so person IDs don't create new time series. Requests that match no route (such as 404s) are grouped under the label `unmatched`. Requests to `/app/metrics` are not counted in these metrics.
 
 ```mermaid
 flowchart LR
@@ -141,7 +141,9 @@ Start the app on port 8003 first (`./run_local.sh` or `make run`), then:
 
     $ make observability
 
-This starts Prometheus on http://localhost:9090 and Grafana on http://localhost:3000. Prometheus scrapes the app every 15 seconds at `host.docker.internal:8003`. Stop the stack with `make observability-down`.
+This starts Prometheus on http://localhost:9090 and Grafana on http://localhost:3000. Prometheus scrapes the app every 15 seconds at `host.docker.internal:8003`. The Prometheus service maps `host.docker.internal` to the host gateway, so this works on Docker Desktop and on Linux. Stop the stack with `make observability-down`.
+
+With `make run`, the container's nginx on port 8003 proxies `/app` to the app, so the metrics endpoint is available there as well.
 
 Grafana allows anonymous viewing. To sign in as an admin, use `admin` / `admin` (set in `docker-compose.observability.yml`).
 
