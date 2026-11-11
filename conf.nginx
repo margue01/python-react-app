@@ -4,7 +4,7 @@ server {
 
   location / {
     root /usr/src/app/ui-people;
-    try_files /build/$uri /build/index.html;
+    try_files /build/$uri /build/index.html =404;
   }
 
   location /some-path/ui/ {

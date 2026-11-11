@@ -1,0 +1,6 @@
+**/node_modules
+.venv
+**/build
+.git
+**/__pycache__
+*.pyc
