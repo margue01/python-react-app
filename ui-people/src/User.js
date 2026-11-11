@@ -2,7 +2,6 @@ import React from 'react';
 
 import { connect } from "react-redux";
 import { fetchUpdateUser } from "./redux/actions";
-import { Glyphicon } from "react-bootstrap";
 
 const User = ({ userInfo, fetchUpdateUser }) => (
     <li onClick={() => fetchUpdateUser(userInfo.person_id, !userInfo.flag)}>
@@ -24,7 +23,7 @@ const renderStatus = (userInfo) => {
         );
     } else {
         return (
-            <span>{ userInfo.flag ? <Glyphicon glyph="ok"/> : <Glyphicon glyph="remove"/> }</span>
+            <span>{ userInfo.flag ? "✔" : "✘" }</span>
         );
     }
 };
